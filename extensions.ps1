@@ -1,1 +1,1 @@
-Write-Host "Hello, World!"
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools
