@@ -2,9 +2,8 @@
 Install-WindowsFeature -Name Web-Server -IncludeManagementTools
 
 # Habilita o RDP (Remote Desktop Protocol)
-$rdpKey = "HKLM:\System\CurrentControlSet\Control\Terminal Server"
-$rdpValue = "fDenyTSConnections"
-Set-ItemProperty -Path $rdpKey -Name $rdpValue -Value 0
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 
 # Baixar e instalar o 7-Zip
 $7zipUrl = "https://www.7-zip.org/a/7z1900-x64.exe"
