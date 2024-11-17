@@ -11,3 +11,9 @@ $downloadPath = "C:\Temp\7z1900-x64.exe"
 New-Item -ItemType Directory -Force -Path "C:\Temp"
 Invoke-WebRequest -Uri $7zipUrl -OutFile $downloadPath
 Start-Process -FilePath $downloadPath -ArgumentList "/S" -Wait
+
+#Configurando Região/Data/Hora
+Set-WinUILanguageOverride -Language pt-BR
+Set-WinLocale -SystemLocale pt-BR
+Set-Culture -CultureInfo pt-BR
+Set-WinHomeLocation -GeoId 29
