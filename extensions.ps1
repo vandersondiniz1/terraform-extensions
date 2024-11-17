@@ -17,3 +17,4 @@ Set-WinUILanguageOverride -Language pt-BR
 Set-WinLocale -SystemLocale pt-BR
 Set-Culture -CultureInfo pt-BR
 Set-WinHomeLocation -GeoId 29
+Set-TimeZone -Id "E. South America Standard Time"
