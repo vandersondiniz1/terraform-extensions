@@ -1,3 +1,7 @@
+# Desabilitar o Windows Update
+Set-Service -Name wuauserv -StartupType Disabled
+Stop-Service -Name wuauserv
+
 # Instala o IIS
 Install-WindowsFeature -Name Web-Server -IncludeManagementTools
 
@@ -12,11 +16,21 @@ New-Item -ItemType Directory -Force -Path "C:\Temp"
 Invoke-WebRequest -Uri $7zipUrl -OutFile $downloadPath
 Start-Process -FilePath $downloadPath -ArgumentList "/S" -Wait
 
-#Configurando Região/Data/Hora
-Set-WinUILanguageOverride -Language pt-BR
-Set-WinLocale -SystemLocale pt-BR
-Set-Culture -CultureInfo pt-BR
-Set-WinHomeLocation -GeoId 29
+# Definir Região (Brasil)
+Set-WinSystemLocale -SystemLocale "pt-BR"
+Set-WinHomeLocation -GeoId 32
+# Definir a Cultura (Brasil)
+Set-Culture -CultureInfo "pt-BR"
+# Configurar Formatos de Data e Hora
+Set-WinDefaultInputMethodOverride -InputTip "0406:00000406"
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "sShortDate" -Value "dd/MM/yyyy"
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "sLongDate" -Value "dddd, d' de 'MMMM' de 'yyyy"
+# Formato de Hora Curto e Longo
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "sShortTime" -Value "HH:mm"
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "sLongTime" -Value "HH:mm:ss"
+# Definir o primeiro dia da semana (Domingo)
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -Name "FirstDayOfWeek" -Value "0"
+# Configurar o Fuso Horário (Brasília)
 Set-TimeZone -Id "E. South America Standard Time"
 
 # Baixar e instalar o .NET Hosting Bundle 8.0.8
