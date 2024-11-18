@@ -43,5 +43,15 @@ $webDeployPath = "C:\Temp\webdeploy_amd64_en-US.msi"
 Invoke-WebRequest -Uri $webDeployUrl -OutFile $webDeployPath
 Start-Process -FilePath msiexec.exe -ArgumentList "/i $webDeployPath /quiet /norestart" -Wait
 
+# Crystal Reports 32
+$url = "https://multisoftware-my.sharepoint.com/personal/henrique_brito_multisoftware_com_br/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fhenrique%5Fbrito%5Fmultisoftware%5Fcom%5Fbr%2FDocuments%2FArquivos%20de%20Chat%20do%20Microsoft%20Teams%2FCR13SP35MSI32%5F0%2D80007712%2EMSI"
+$destination = "C:\Temp\CR13SP35MSI32.msi"
+Invoke-WebRequest -Uri $url -OutFile $destination
+
+# Crystal Reports 64
+$url64 = "https://multisoftware-my.sharepoint.com/personal/henrique_brito_multisoftware_com_br/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fhenrique%5Fbrito%5Fmultisoftware%5Fcom%5Fbr%2FDocuments%2FArquivos%20de%20Chat%20do%20Microsoft%20Teams%2FCR13SP35MSI64%5F0%2D80007712%2EMSI"
+$destination64 = "C:\Temp\CR13SP35MSI64.msi"
+Invoke-WebRequest -Uri $url64 -OutFile $destination64
+
 # Limpar arquivos temporários
 Remove-Item -Path "C:\Temp\*" -Force -Recurse
