@@ -7,7 +7,7 @@ Write-Host "Arquivo de log criado em: $logPath"
 # Alterar a senha da VM
 Write-Host "Iniciando alteração da senha do usuário 'Administrador'..."
 
-$NewPassword = "minhasenha"
+$NewPassword = "vl2wYjm2G0unaG9ewS2ySgt95ZFRf4QeVat"
 $adminUser = "Administrador"
 
 Write-Host "Definindo nova senha para o usuário '$adminUser'..."
